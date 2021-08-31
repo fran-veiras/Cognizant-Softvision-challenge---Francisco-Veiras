@@ -69,7 +69,7 @@ export default function Home() {
     saveTaskToLocalStorage(newTaskList)
   }
 
-  function saveTaskToLocalStorage(task) {
+  function saveTaskToLocalStorage(tasks) {
     localStorage.setItem("tasks", JSON.stringify(tasks))
   }
 
