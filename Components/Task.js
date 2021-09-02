@@ -1,27 +1,23 @@
 import React, {useState} from 'react';
 
-export const Task = (props) => {
+export default function Task(props) {
 
     const {addTask, deleteTask, moveTask, task} = props;
 
     const [collapsed, setCollapsed] = useState(task.isCollapsed)
     const [formAction, setFormAction] = useState("")
 
-    function setComment (e) {
-        setComment(e.target.attributes.comment.value);
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault();
+    function handleSubmit(event) {
+        event.preventDefault();
 
         if (formAction === "save") {
             if (collapsed) {
                 setCollapsed(false);
-            }else {
+            } else {
                 let newTask = {
                     id: task.id,
-                    title: e.target.elements.title.value,
-                    comments: e.target.elements.comments.value,
+                    title: event.target.elements.title.value,
+                    comments: event.target.elements.comments.value,
                     status: task.status, 
                     isCollapsed: true,
                 };
@@ -40,13 +36,13 @@ export const Task = (props) => {
         let newStatus = "";
 
         if (task.status === "Rechazo") {
-            newStatus = "Asignación"
+            newStatus = "Asignación";
         }else if (task.status === "Asignación") {
-            newStatus = "Oferta"
+            newStatus = "Oferta";
         }else if (task.status === "Oferta") {
-            newStatus = "Entrevista tecnica"
+            newStatus = "Entrevista tecnica";
         }else if (task.status === "Entrevista tecnica") {
-            newStatus = "Entrevista inicial"
+            newStatus = "Entrevista inicial";
         }
 
         if (newStatus !== "") {
@@ -58,17 +54,17 @@ export const Task = (props) => {
         let newStatus = "";
 
         if (task.status === "Entrevista inicial") {
-            newStatus = "Entrevista tecnica"
+            newStatus = "Entrevista tecnica";
         } else if (task.status === "Entrevista tecnica") {
-            newStatus = "Oferta"
+            newStatus = "Oferta";
         }else if (task.status === "Oferta") {
-            newStatus = "Asignación"
+            newStatus = "Asignación";
         }else if (task.status === "Asignación") {
-            newStatus = "Rechazo"
+            newStatus = "Rechazo";
         }
 
         if (newStatus !== "") {
-            moveTask(task.id, newStatus)
+            moveTask(task.id, newStatus);
         }
     }
 
@@ -96,9 +92,12 @@ export const Task = (props) => {
                 }}>
                     {collapsed ? "Edit" : "Save"}
                 </button>
-                {collapsed && <button onClick={() => {
+                {collapsed && (
+                <button onClick={() => {
                     setFormAction("delete")
-                }}>X</button>}
+                }}>
+                    X
+                </button>)}
             </form>
             <button onClick={handleMoveRight}>
                 &#187;
