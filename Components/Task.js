@@ -57,9 +57,9 @@ export default function Task(props) {
             newStatus = "Entrevista tecnica";
         } else if (task.status === "Entrevista tecnica") {
             newStatus = "Oferta";
-        }else if (task.status === "Oferta") {
+        } else if (task.status === "Oferta") {
             newStatus = "Asignación";
-        }else if (task.status === "Asignación") {
+        } else if (task.status === "Asignación") {
             newStatus = "Rechazo";
         }
 

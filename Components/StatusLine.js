@@ -14,22 +14,22 @@ export default function StatusLine(props) {
 
     if (tasks) {
         tasksForStatus = tasks.filter((task) => {
-            return task.status === status;
+          return task.status === status;
         });
-    }
-
+      }
+    
     if (tasksForStatus) {
         taskList = tasksForStatus.map((task) => {
-            return (
-                <Task
-                    addTask={(task) => addTask(task)}
-                    deleteTask={(id) => deleteTask(id)}
-                    moveTask={(id, status) => moveTask(id, status)}
-                    key={task.id}
-                    task={task}
-                />
-            );
-        });
+        return (
+        <Task
+            addTask={(task) => addTask(task)}
+            deleteTask={(id) => deleteTask(id)}
+            moveTask={(id, status) => moveTask(id, status)}
+            key={task.id}
+            task={task}
+        />
+        );
+    });
     }
 
     return (

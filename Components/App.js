@@ -12,6 +12,7 @@ function App() {
 
   function addEmptyTask(status) {
     const lastTask = tasks[tasks.length - 1];
+
     let newTaskId = 1;
 
     if (lastTask !== undefined) {
@@ -44,11 +45,11 @@ function App() {
   function deleteTask(taskId) {
     let filteredTasks = tasks.filter((task) => {
       return task.id !== taskId;
-    })
+    });
 
-    setTasks(filteredTasks)
+    setTasks(filteredTasks);
 
-    saveTasksToLocalStorage(filteredTasks)
+    saveTasksToLocalStorage(filteredTasks);
   }
 
   function moveTask(id, newStatus) {
